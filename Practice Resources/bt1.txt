@@ -1,0 +1,46 @@
+1. List of students in the class named "CNTT 2 K58". 
+
+select * from tiny.student, tiny.clazz 
+where student.clazz_id = clazz.clazz_id 
+and clazz.name = 'CNTT2.2-K66';
+
+select * from tiny.student inner join tiny.clazz 
+on student.clazz_id = clazz.clazz_id 
+and clazz.name = 'CNTT2.2-K66';
+
+
+2. List of students in classes whose name contains "CNTT" 
+
+select * from tiny.student inner join tiny.clazz on student.clazz_id = clazz.clazz_id and clazz.name like '%CNTT%';
+
+
+
+3. List of all students with their class name, monitor name. 
+
+select student.student_id, student.last_name, student.first_name, clazz.clazz_id, clazz.name as class_name, (select first_name from tiny.student as monitor where monitor.student_id = clazz.monitor_id) as monitor_name
+from tiny.student left join tiny.clazz
+on student.clazz_id = clazz.clazz_id;
+
+4. Add column gender to table student and contraint that gender must be ‘F’ or ‘M’ or NULL. Add new data to table student to test the contraint 
+
+alter table tiny.student 
+add gender char(1)
+check (gender in ('F', 'M', NULL));
+
+update tiny.student
+set gender = 'M'
+where student.student_id = '20220100';
+
+
+
+5. Redefine the foreign key constraint "student_fk_clazz" with option "CASCADE" on delete and update. Then delete and update some data to test the constraint. 
+
+alter table tiny.student
+drop constraint fk_student_2_class,
+add constraint student_fk_clazz
+foreign key (clazz_id)
+references tiny.clazz(clazz_id)
+on delete cascade
+on update cascade;
+
+

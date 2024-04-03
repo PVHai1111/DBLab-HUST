@@ -1,0 +1,34 @@
+INSERT INTO tiny.clazz(clazz_id, name) VALUES ('20162101',
+'CNTT1.01-K61');
+INSERT INTO tiny.clazz(name, clazz_id) VALUES ('CNTT2.02-K62',
+'20172202');
+INSERT INTO tiny.clazz VALUES ('20172201', 'CNTT2.01-K62', NULL,
+NULL);
+
+-- Insert 10 students
+INSERT INTO tiny.student (student_id, last_name, first_name)
+VALUES  ('20220103', 'Tran', 'Hieu'),
+        ('20220104', 'Le', 'Minh'),
+        ('20220105', 'Pham', 'Hoa'),
+        ('20220106', 'Do', 'Long'),
+        ('20220107', 'Nguyen', 'Trang'),
+        ('20220108', 'Vu', 'Nam'),
+        ('20220109', 'Hoang', 'Huyen'),
+        ('20220110', 'Truong', 'Tuan'),
+        ('20220111', 'Phan', 'Thanh'),
+        ('20220112', 'Tran', 'Bao');
+
+-- Assign 10 students into these two classes
+UPDATE tiny.student SET clazz_id = 'C2022001'
+WHERE student_id IN ('20220103', '20220104', '20220105', '20220106', '20220107');
+
+UPDATE tiny.student SET clazz_id = 'C2022002'
+WHERE student_id IN ('20220108', '20220109', '20220110', '20220111', '20220112');
+
+-- Assign a monitor for each class
+UPDATE tiny.clazz SET monitor_id = '20220100'
+WHERE clazz_id = 'C2022001';
+
+UPDATE tiny.clazz SET monitor_id = '20220102'
+WHERE clazz_id = 'C2022002';
+

@@ -1,0 +1,21 @@
+Hình dung về sản phẩm sử dụng dtb (làm những j và phục vụ cho ai):
+Web: 
+Đăng nhập -> 2 chức năng: quản lý (chủ phòng gym, nhân viên (sale, chăm sóc, pt)) và hội viên
+-> Ứng với 2 loại tk có set chức năng khác nhau
+	Loại 1: Hội viên - thực hiện các chức năng của hội viên
+	Loại 2: Quản lý - 4 loại
+		2.1 Chủ phòng gym - Có quyền thao tác tất cả các chức năng quản lý + quản lý nhân viên
+		2.2 + 2.3 + 2.4 - 3 loại nhân viên - chỉ có quyền thao tác các chức năng quản lý nhất định (ko có ql nhân viên)
+
+Các thực thể trong hệ thống:
+Hội viên (member)
+Quản lý (manager)
+Phòng tập (room)
+Thiết bị (gadget)
+Gói tập (package)
+
+Sau khi xác định thực thể xong, xét mối liên hệ giữa các thực thể (VD: 1 phòng tập có nhiều hội viên, hội viên thuộc phòng tập -> Có bảng liên hệ enrollment chứa member_id và room_id là khóa ngoài, enrollment_id là khóa chính mới thể hiện đc quan hệ 1-n giữa phòng - hội viên)
+
+
+
+		
